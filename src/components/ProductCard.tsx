@@ -1,9 +1,33 @@
 import { Product } from "../types/Product";
-import { StyleSheet, Text, View, Image } from "react-native";
-
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { useState } from "react";
 interface ProductCardProps {
   product: Product;
+  onPress: () => void;
 }
+
+const ProductCard = ({ product, onPress }: ProductCardProps) => {
+  const [imageError, setImageError] = useState<boolean>(false);
+  return (
+    <Pressable style={styles.container} onPress={onPress}>
+      {imageError ? (
+        <View style={styles.imagePlaceholder}>
+          <Text>No image</Text>
+        </View>
+      ) : (
+        <Image
+          source={{ uri: product.thumbnail }}
+          style={styles.thumbnail}
+          onError={() => {
+            setImageError(true);
+          }}
+        />
+      )}
+      <Text style={styles.title}>{product.title}</Text>
+      <Text style={styles.price}>RM {product.price}</Text>
+    </Pressable>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +42,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
 
-  image: {
+  thumbnail: {
     width: 100,
     height: 100,
     alignSelf: "center",
@@ -35,16 +59,14 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginTop: 8,
   },
+
+  imagePlaceholder: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#e0e0e0",
+  },
 });
-
-const ProductCard = ({ product }: ProductCardProps) => {
-  return (
-    <View style={styles.container}>
-      <Image source={{ uri: product.thumbnail }} style={styles.image} />
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.price}>RM {product.price}</Text>
-    </View>
-  );
-};
-
 export default ProductCard;
