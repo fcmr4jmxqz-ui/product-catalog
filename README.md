@@ -64,7 +64,7 @@ API logic is separated from the UI to keep the code organized and easier to main
 npm install
 npx expo start
 ```
-Setup
+## Setup
 git clone <repository-url>
 cd product-catalog
 npm install
