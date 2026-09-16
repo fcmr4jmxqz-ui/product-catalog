@@ -64,6 +64,15 @@ API logic is separated from the UI to keep the code organized and easier to main
 npm install
 npx expo start
 ```
+Setup
+git clone <repository-url>
+cd product-catalog
+npm install
+npx expo start
+
+Scan the QR code with Expo Go or open the app in an available simulator.
+
+No additional backend setup is required. The app uses the public DummyJSON API.
 
 Open the app using Expo Go or an available simulator.
 
