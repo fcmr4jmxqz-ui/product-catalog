@@ -64,11 +64,15 @@ API logic is separated from the UI to keep the code organized and easier to main
 npm install
 npx expo start
 ```
+
 ## Setup
+
+```bash
 git clone <repository-url>
 cd product-catalog
 npm install
 npx expo start
+```
 
 Scan the QR code with Expo Go or open the app in an available simulator.
 
